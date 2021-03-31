@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   CircularProgress, ListItem, ListItemText, List, Button,
 } from '@material-ui/core';
+import { Rating, Pagination } from '@material-ui/lab';
 
 const customStyles = {
   content: {
@@ -26,13 +27,22 @@ const useStyles = makeStyles({
     color: 'whitesmoke',
     fontSize: 'medium',
   },
+  page: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1em',
+  },
+  listItem: {
+    display: 'table-row',
+  },
 });
 
 function Places({
-  stores, openPlaces, clickPlaces, setPick, pickList, setStores
+  stores, openPlaces, clickPlaces, setPick, pickList, setStores,
 }) {
   const classes = useStyles();
   const [selected, setSelected] = useState([]);
+  const [currentPg, setPage] = useState(1);
 
   function selectItem(e, ind) {
     const currInd = selected.indexOf(ind);
@@ -46,10 +56,14 @@ function Places({
     }
   }
 
+  function changePages(e, value) {
+    setPage(value);
+  }
+
   function submitPlaces() {
     const newArr = pickList;
     for (let i = 0; i < selected.length; i++) {
-      newArr.push(stores[i]);
+      newArr.push(stores[currentPg + 1][i]);
     }
     setPick(newArr);
     setSelected([]);
@@ -65,22 +79,25 @@ function Places({
             ? (
               <div id="mainPlaces">
                 <List id="placesModal">
-                  <div className="placesList">
-                    {stores.map((item, index) => (
+                  <div id="listModal">
+                    {stores[currentPg - 1].map((item, index) => (
                       index < 10 ? (
-                        <ListItem value={item.name} key={item.id} button onClick={(e) => selectItem(e, index)} selected={selected.includes(index)}>
-                          <ListItemText primary={item.name} />
+                        <ListItem className={classes.listItem} value={item.name} key={item.id} button onClick={(e) => selectItem(e, index)} selected={selected.includes(index)}>
+                          <div className="placesList">
+                            <div className="rightList"><ListItemText primary={item.name} /></div>
+                            <div className="rightList">{item.location.display_address}</div>
+                          </div>
+                          <div className="placesList">
+                            <div className="leftList"><Rating value={item.rating} readOnly size="small" /></div>
+                            <div className="leftList">CHECK OUT ON YELP</div>
+                          </div>
                         </ListItem>
                       ) : null
                     ))}
                   </div>
-                  <div className="placesList2">
-                    {stores.map((item, index) => (
-                      index >= 10 ? <ListItem value={item.name} key={item.id} button onClick={(e) => selectItem(e, index)} selected={selected.includes(index)}><ListItemText primary={item.name} /></ListItem> : null
-                    ))}
-                  </div>
                 </List>
                 <Button className={classes.root} onClick={submitPlaces}> Submit </Button>
+                <Pagination count={stores.length} variant="outlined" className={classes.page} page={currentPg} onChange={changePages} />
               </div>
             ) : <CircularProgress size="2rem" /> }
         </div>

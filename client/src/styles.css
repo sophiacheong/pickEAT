@@ -1,20 +1,93 @@
+body, html {
+  font-family: 'Bebas Neue', cursive;
+  margin: 0;
+  width: 100%;
+}
+
+html {
+  background-color: whitesmoke;
+}
+
 #header {
   display: flex;
   justify-content: center;
   font-family: 'Alfa Slab One', cursive;
   flex-flow: column nowrap;
   align-items: center;
+  padding-bottom: 0.5em;
+  border: double;
+  margin: 0.1em;
+  background: #c4cdda;
 }
 
 h1 {
-  font-size: 2.5em;
-  margin: 1% 0%;
+  font-size: 2.7em;
+  margin: 0.3% 0%;
 }
 
 h5 {
   margin: 0%;
   font-family: 'Cookie', cursive;
-  font-size: 1.5em;
+  font-size: 1.7em;
+  color: whitesmoke;
+}
+
+form {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-flow: row nowrap;
+}
+
+.formFields {
+  display: flex;
+  flex: 0.2;
+  justify-content: center;
+  margin: 1em;
+}
+
+.formFields1 {
+  display: flex;
+  flex: 0.2;
+  justify-content: center;
+  margin: 1em;
+  width: 20%;
+}
+
+#error {
+  color: rgba(150, 40, 27, 1);
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  border-bottom: 1px solid;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.err {
+  color: rgba(207, 0, 15, 1);
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  font-size: 23px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: all 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+  transform: translateX(-100px);
 }
 
 .modal_buttons {
@@ -31,23 +104,64 @@ h5 {
 #placesModal {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
+  align-items: baseline;
+}
+
+#listModal {
+  display: table;
 }
 
 .placesList {
-  display: flex;
+  display: table-cell;
   flex-flow: column wrap;
-  justify-content: center;
-  align-self: stretch;
-  order: 1;
+  padding: 0.5em;
+  width: 50%;
 }
 
-.placesList2 {
-  display: flex;
-  flex-flow: column wrap;
-  align-self: stretch;
-  justify-content: center;
-  order: 2;
+.leftList {
+  text-align: right;
+}
+
+#mobileForm {
+  padding: 0.3em;
+  border: double;
+  margin: 1em;
+  background: whitesmoke;
+}
+
+@media only screen and (max-width: 980px) {
+  html {
+    background: #c4cdda;
+  }
+  #header, h1, h5 {
+    zoom: 1.5;
+    border: none;
+    color: black;
+  }
+  body {
+    zoom: 2.01;
+  }
+  form {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    margin-top: 1.5%;
+  }
+  .formFields {
+    display: flex;
+    align-self: center;
+    margin: 1%;
+    width: 90%;
+  }
+  #listModal {
+    display: table;
+    white-space: nowrap;
+  }
+  .placesList {
+    display: table-cell;
+    flex-flow: column wrap;
+    padding: 0.5em;
+  }
 }
 
 :root {
@@ -56,7 +170,7 @@ h5 {
   --wheel-slice-spacing: 50px;
   --wheel-border-size: 5px;
   --wheel-color: #233654;
-  --neutral-color: white;
+  --neutral-color: whitesmoke;
   --PI: 3.14159265358979;
   --nb-item: 0;
   --item-nb: 0;

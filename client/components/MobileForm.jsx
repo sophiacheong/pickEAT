@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({
+const MobileForm = ({
   setLocation, setTerm, term, submitInfo, error, setError,
 }) => {
   const classes = useStyles();
@@ -67,7 +67,7 @@ const Form = ({
   );
 };
 
-Form.propTypes = {
+MobileForm.propTypes = {
   setLocation: PropTypes.func,
   setTerm: PropTypes.func,
   term: PropTypes.string,
@@ -76,7 +76,7 @@ Form.propTypes = {
   setError: PropTypes.func,
 };
 
-Form.defaultProps = {
+MobileForm.defaultProps = {
   setLocation: null,
   setTerm: null,
   term: '',
@@ -85,4 +85,4 @@ Form.defaultProps = {
   setError: null,
 };
 
-export default Form;
+export default MobileForm;
