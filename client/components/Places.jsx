@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  CircularProgress, ListItem, ListItemText, List, Button, Link
+  CircularProgress, ListItem, ListItemText, List, Button, Link,
 } from '@material-ui/core';
 import { Rating, Pagination } from '@material-ui/lab';
 
