@@ -12,11 +12,15 @@ import Suggestions from './Suggestions';
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
+    fontFamily: 'Playfair Display, serif',
   },
   btn: {
     margin: theme.spacing(1),
-    background: 'whitesmoke',
     fontWeight: 'bold',
+    fontFamily: 'Playfair Display, serif',
+  },
+  text: {
+    fontFamily: 'Playfair Display, serif',
   },
 }));
 
@@ -39,7 +43,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitInfo}>
-      <div className="formFields">
+      <div className="formFields" style={{ width: '15%' }}>
         <Select defaultValue="location" onChange={(e) => setLocation(e.target.value)} fullWidth>
           <MenuItem value="location">
             {' '}
@@ -47,19 +51,19 @@ const Form = ({
             {' '}
           </MenuItem>
           {cities.map((item, index) => (
-            <MenuItem value={item} key={index}>{item}</MenuItem>
+            <MenuItem value={item} key={index} className={classes.text}>{item}</MenuItem>
           ))}
         </Select>
       </div>
       <div className="formFields">
-        <TextField label={error ? 'Error' : 'Input a category'} name="term" onChange={(e) => { setTerm(e.currentTarget.value); setError(false); }} value={term} error={error} helperText={error ? 'No results found.' : null} fullWidth />
+        <TextField label={error ? 'Error' : 'Input a category'} name="term" onChange={(e) => { setTerm(e.currentTarget.value); setError(false); }} value={term} error={error} helperText={error ? 'No results found.' : null} fullWidth variant="filled" />
       </div>
       <div className="formFields">
-        <Button type="button" onClick={clickModal} variant="contained" size="small" fullWidth className={classes.btn}>Suggestions</Button>
+        <Button type="button" onClick={clickModal} variant="contained" size="large" className={classes.btn}>Suggestions</Button>
         <Suggestions clickModal={clickModal} open={openModal} setTerm={setTerm} />
       </div>
       <div className="formFields">
-        <Button type="submit" variant="contained" size="small" className={classes.button} endIcon={<SearchIcon />} fullWidth>
+        <Button type="submit" variant="contained" size="large" className={classes.button} endIcon={<SearchIcon />}>
           Search
         </Button>
       </div>

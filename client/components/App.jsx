@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { makeStyles } from '@material-ui/core/styles';
+import { IconButton } from '@material-ui/core';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 import { useMediaQuery } from 'react-responsive';
 import MobileForm from './MobileForm';
 import Places from './Places';
@@ -31,7 +34,19 @@ const customStyles = {
   },
 };
 
+const useStyles = makeStyles({
+  reset: {
+    fontSize: '3em',
+    color: 'black',
+  },
+  mobile: {
+    fontSize: '2em',
+    color: 'black',
+  },
+});
+
 function App() {
+  const classes = useStyles();
   const [location, setLocation] = useState('');
   const [term, setTerm] = useState('');
   const [stores, setStores] = useState([]);
@@ -116,6 +131,11 @@ function App() {
           setStores={setStores}
         />
         <Wheel pickList={pickList} setPick={setPick} />
+        <div id="reset">
+          <IconButton onClick={() => setPick([])}>
+            <RotateLeftIcon className={classes.reset} />
+          </IconButton>
+        </div>
       </Desktop>
       <Mobile>
         <div id="mobileForm">
@@ -142,6 +162,11 @@ function App() {
             setStores={setStores}
           />
           <Wheel pickList={pickList} setPick={setPick} />
+        </div>
+        <div id="reset">
+          <IconButton onClick={() => setPick([])}>
+            <RotateLeftIcon className={classes.mobile} />
+          </IconButton>
         </div>
       </Mobile>
     </div>

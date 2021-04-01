@@ -26,7 +26,6 @@ class Wheel extends React.Component {
   render() {
     const { selectedItem } = this.state;
     const { pickList } = this.props;
-
     const wheelVars = {
       '--nb-item': pickList.length,
       '--selected-item': selectedItem,

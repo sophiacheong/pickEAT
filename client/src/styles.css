@@ -5,7 +5,12 @@ body, html {
 }
 
 html {
-  background-color: whitesmoke;
+  background: url(./huck4.jpeg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: whitesmoke; */
 }
 
 #header {
@@ -17,7 +22,7 @@ html {
   padding-bottom: 0.5em;
   border: double;
   margin: 0.1em;
-  background: #c4cdda;
+  background: rgba(196, 205, 218, 0.8);
 }
 
 h1 {
@@ -29,19 +34,17 @@ h5 {
   margin: 0%;
   font-family: 'Cookie', cursive;
   font-size: 1.7em;
-  color: whitesmoke;
+  color: ghostwhite;
 }
 
 form {
   display: flex;
-  align-items: baseline;
   justify-content: center;
   flex-flow: row nowrap;
 }
 
 .formFields {
-  display: flex;
-  flex: 0.2;
+  display: inline-flex;
   justify-content: center;
   margin: 1em;
 }
@@ -125,21 +128,44 @@ form {
 #mobileForm {
   padding: 0.3em;
   border: double;
-  margin: 1em;
-  background: whitesmoke;
+  margin: 0.1em;
+  background: rgba(245, 245, 245, 0.85);
+}
+
+.mobileFields {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row nowrap;
+  align-content: center;
+  width: 100%;
+}
+
+.mobileFields-Zoom {
+  zoom: 1.1;
+}
+
+#reset {
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 980px) {
   html {
-    background: #c4cdda;
+    /* background: #c4cdda; */
+    background: url(./Springtime-Beignets-Berries_EXPS_THAM17_199933_C11_10_1b.jpeg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   #header, h1, h5 {
-    zoom: 1.5;
+    zoom: 1.2;
     border: none;
     color: black;
+    background: none;
   }
   body {
-    zoom: 2.01;
+    zoom: 2.19;
   }
   form {
     display: flex;

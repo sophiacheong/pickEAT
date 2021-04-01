@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  CircularProgress, ListItem, ListItemText, List, Button,
+  CircularProgress, ListItem, ListItemText, List, Button, Link
 } from '@material-ui/core';
 import { Rating, Pagination } from '@material-ui/lab';
 
@@ -34,6 +34,9 @@ const useStyles = makeStyles({
   },
   listItem: {
     display: 'table-row',
+  },
+  text: {
+    fontFamily: 'Playfair Display, serif',
   },
 });
 
@@ -63,7 +66,7 @@ function Places({
   function submitPlaces() {
     const newArr = pickList;
     for (let i = 0; i < selected.length; i++) {
-      newArr.push(stores[currentPg + 1][i]);
+      newArr.push(stores[currentPg - 1][i]);
     }
     setPick(newArr);
     setSelected([]);
@@ -82,14 +85,16 @@ function Places({
                   <div id="listModal">
                     {stores[currentPg - 1].map((item, index) => (
                       index < 10 ? (
-                        <ListItem className={classes.listItem} value={item.name} key={item.id} button onClick={(e) => selectItem(e, index)} selected={selected.includes(index)}>
+                        <ListItem className={classes.listItem} value={item.name} key={item.id} button onClick={(e) => selectItem(e, item.id)} selected={selected.includes(item.id)}>
                           <div className="placesList">
-                            <div className="rightList"><ListItemText primary={item.name} /></div>
+                            <div className="rightList"><ListItemText className={classes.text} primary={item.name} /></div>
                             <div className="rightList">{item.location.display_address}</div>
                           </div>
                           <div className="placesList">
                             <div className="leftList"><Rating value={item.rating} readOnly size="small" /></div>
-                            <div className="leftList">CHECK OUT ON YELP</div>
+                            <div className="leftList">
+                              <Link href={item.url} target="_blank">YELP PAGE</Link>
+                            </div>
                           </div>
                         </ListItem>
                       ) : null

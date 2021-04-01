@@ -12,10 +12,6 @@ import Suggestions from './Suggestions';
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
-  },
-  btn: {
-    margin: theme.spacing(1),
-    background: 'whitesmoke',
     fontWeight: 'bold',
   },
 }));
@@ -54,14 +50,16 @@ const MobileForm = ({
       <div className="formFields">
         <TextField label={error ? 'Error' : 'Input a category'} name="term" onChange={(e) => { setTerm(e.currentTarget.value); setError(false); }} value={term} error={error} helperText={error ? 'No results found.' : null} fullWidth />
       </div>
-      <div className="formFields">
-        <Button type="button" onClick={clickModal} variant="contained" size="small" fullWidth className={classes.btn}>Suggestions</Button>
-        <Suggestions clickModal={clickModal} open={openModal} setTerm={setTerm} />
-      </div>
-      <div className="formFields">
-        <Button type="submit" variant="contained" size="small" className={classes.button} endIcon={<SearchIcon />} fullWidth>
-          Search
-        </Button>
+      <div className="mobileFields">
+        <div className="mobileFields-Zoom">
+          <Button type="button" onClick={clickModal} variant="contained" size="small" fullWidth className={classes.button}>Suggestions</Button>
+          <Suggestions clickModal={clickModal} open={openModal} setTerm={setTerm} />
+        </div>
+        <div className="mobileFields-Zoom">
+          <Button type="submit" variant="contained" size="small" className={classes.button} endIcon={<SearchIcon />} fullWidth>
+            Search
+          </Button>
+        </div>
       </div>
     </form>
   );
