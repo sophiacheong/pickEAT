@@ -1,5 +1,5 @@
 # pickEAT
-<img height="400" src="https://raw.githubusercontent.com/sophiacheong/pickEAT/main/desktop.png" /> <img  height="400" src="https://raw.githubusercontent.com/sophiacheong/pickEAT/main/mobile.png" /> <br/>
+<img height="380" src="https://raw.githubusercontent.com/sophiacheong/pickEAT/main/desktop.png" /> <img  height="380" src="https://raw.githubusercontent.com/sophiacheong/pickEAT/main/mobile.png" /> <br/>
 PickEAT is an app (mobile/desktop) where it will help you decide where to eat. This was a project I had during Hackreactor and was given two days to complete. When you input your location (CA based ONLY) and a category of food, it will give you a list of locations to choose from to put onto the wheel. Click the wheel so the app can start picking!
 
 ### Built With
